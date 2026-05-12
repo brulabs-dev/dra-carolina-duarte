@@ -221,6 +221,24 @@ body::before {
 .header-cta:active { transform: translateY(0) scale(0.98); }
 .header-cta svg { width: 14px; height: 14px; }
 
+@media (max-width: 640px) {
+  .site-header__inner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    min-height: 64px;
+  }
+  .brand {
+    min-width: 0;
+    font-size: 1.05rem;
+  }
+  .brand small { display: none; }
+  .header-cta {
+    padding: 10px 14px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+}
+
 /* ---------- hero ---------- */
 .hero { position: relative; padding-block: clamp(64px, 10vw, 120px) clamp(72px, 12vw, 140px); overflow: hidden; }
 
@@ -510,6 +528,16 @@ body::before {
   .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
   .gallery figure:nth-child(n) { grid-column: span 1; grid-row: span 2; }
   .gallery figure:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .spec__image {
+    aspect-ratio: 3 / 4;
+    max-height: 420px;
+  }
+  .spec__image img {
+    object-position: center top;
+  }
+  .gallery img {
+    object-position: center top;
+  }
 }
 
 .gallery figcaption {
@@ -627,6 +655,29 @@ body::before {
   color: #e94e4e;
   margin-right: 8px;
   animation: pulse 1.6s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .video__caption {
+    padding: 36px 22px;
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--bone) 14%, transparent);
+  }
+  .video__title {
+    font-size: clamp(1.9rem, 11vw, 2.6rem);
+  }
+  .video__lede {
+    max-width: 36ch;
+  }
+  .video__frame {
+    width: 100%;
+    min-height: 100svh;
+    aspect-ratio: 9 / 16;
+  }
+  .video__overlay {
+    left: 16px;
+    top: 16px;
+  }
 }
 
 /* ---------- avaliacoes (Doctoralia) ---------- */
@@ -749,6 +800,23 @@ body::before {
   transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .avaliacoes__badge a:hover { color: var(--accent); border-color: var(--accent); }
+
+@media (max-width: 640px) {
+  .avaliacoes__badge {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    border-radius: 6px;
+    padding: 20px;
+    gap: 14px;
+  }
+  .avaliacoes__badge .stars {
+    letter-spacing: 2px;
+  }
+  .avaliacoes__badge a {
+    width: max-content;
+  }
+}
 
 /* ---------- locais (map app) ---------- */
 .locais { background: var(--paper); }
@@ -959,6 +1027,29 @@ body::before {
   pointer-events: none;
 }
 .locais__legend small { color: var(--muted); letter-spacing: 0.14em; }
+
+@media (max-width: 640px) {
+  .locais__panel {
+    padding: 18px;
+  }
+  .locais__hud {
+    grid-template-columns: 1fr;
+  }
+  .locais__cards {
+    min-height: 280px;
+  }
+  .locais__card {
+    padding: 22px;
+  }
+  .locais__map {
+    min-height: 380px;
+  }
+  .locais__compass,
+  .locais__legend,
+  .leaflet-control-attribution {
+    display: none !important;
+  }
+}
 
 /* ---------- CTA final ---------- */
 .cta { background: var(--forest-deep); color: var(--bone); position: relative; overflow: hidden; }
