@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      Dra. Carolina Duarte
+      <small>{{ site.doctor.crm }}</small>
+    </a>
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="#sobre">Sobre</a>
+      <a href="#especialidades">Especialidades</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#locais">Onde atendo</a>
+      <a href="#instagram">Instagram</a>
+    </nav>
+    <a class="header-cta" href="https://wa.me/{{ site.doctor.phone_e164 }}?text={{ site.doctor.whatsapp_message | url_encode }}" target="_blank" rel="noopener">
+      Agendar
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6"/>
+      </svg>
+    </a>
+  </div>
+</header>

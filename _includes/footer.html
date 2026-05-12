@@ -1,0 +1,34 @@
+<footer class="site-footer" id="contato">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__col">
+        <p class="footer__brand">Dra. Carolina Duarte</p>
+        <p>Dermatologia clínica, cirúrgica e estética.<br>Florianópolis · Santa Catarina.</p>
+        <p style="margin-top: 14px; color: var(--muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;">
+          {{ site.doctor.crm }} · {{ site.doctor.rqe }}
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4>Contato</h4>
+        <a href="tel:+{{ site.doctor.phone_e164 }}">{{ site.doctor.phone_display }}</a>
+        <a href="https://wa.me/{{ site.doctor.phone_e164 }}?text={{ site.doctor.whatsapp_message | url_encode }}" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://instagram.com/{{ site.doctor.instagram_handle }}" target="_blank" rel="noopener">Instagram @{{ site.doctor.instagram_handle }}</a>
+        <a href="{{ site.doctor.doctoralia_url }}" target="_blank" rel="noopener">Doctoralia</a>
+      </div>
+      <div class="footer__col">
+        <h4>Onde atendo</h4>
+        {% for c in site.clinics %}
+        <p>
+          <strong style="color: var(--ink);">{{ c.name }}</strong><br>
+          {{ c.district }} · Florianópolis
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© {{ 'now' | date: '%Y' }} Dra. Carolina Duarte</span>
+      <span>{{ site.doctor.crm }} · {{ site.doctor.rqe }}</span>
+      <span>Site institucional</span>
+    </div>
+  </div>
+</footer>
