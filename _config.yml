@@ -3,7 +3,7 @@ email: ""
 description: >-
   Dermatologia clínica, cirúrgica e estética em Florianópolis. Atendimento da
   Dra. Carolina Duarte (CRM-SC 32750 · RQE 26040).
-baseurl: "/dra-carolina-duarte"
+baseurl: "/"
 url: "https://brulabs-dev.github.io"
 lang: pt-BR
 
@@ -12,33 +12,35 @@ doctor:
   short_name: Carolina Duarte
   crm: CRM-SC 32750
   rqe: RQE 26040
-  phone_display: "(48) 99157-9078"
-  phone_e164: "5548991579078"
-  whatsapp_message: "Olá, Dra. Carolina. Gostaria de agendar uma consulta."
+  whatsapp_message: "Oi, vim do site e gostaria de agendar uma consulta com a Dra. Carolina Duarte"
   instagram_handle: "dracarolina_duarte"
   doctoralia_url: "https://www.doctoralia.com.br/carolina-duarte-5/dermatologista/florianopolis"
 
 clinics:
   - id: centro
     code: "01"
-    name: ArteZam Day Hospital
+    name: Artezan Day Hospital
     district: Centro
     city: Florianópolis · SC
     address: Alameda Gov. Heriberto Hulse, 123
     zip: "88015-170"
+    phone: "(48) 98831-3019"
+    phone_e164: "5548988313019"
     lat: -27.5946
     lng: -48.5495
     zoom: 16
     hint: Consultório principal, cirurgias e procedimentos.
   - id: ingleses
     code: "02"
-    name: Saúde no Bairro Ingleses
+    name: Clínica Saúde no Bairro
     district: Ingleses Norte
     city: Florianópolis · SC
-    address: Rua Intendente João Nunes Vieira, 1030
-    zip: "88058-700"
-    lat: -27.4348
-    lng: -48.3974
+    address: Travessa Manoel Ramos de Souza, 75 - Sala 05
+    zip: "88058-180"
+    phone: "(48) 99181-1761"
+    phone_e164: "5548991811761"
+    lat: -27.43842
+    lng: -48.39977
     zoom: 16
     hint: Atendimento no norte da ilha, mais próximo das praias.
 

@@ -7,8 +7,22 @@
 
 (() => {
   initReveals();
-  initMap();
   initReviews();
+  initSpecialties();
+
+  // ----------------------------------------------------------
+  function initSpecialties() {
+    const specialties = document.querySelectorAll('.specialty');
+    if (!specialties.length) return;
+
+    specialties.forEach((s) => {
+      s.addEventListener('click', () => {
+        const isActive = s.classList.contains('specialty--active');
+        specialties.forEach((el) => el.classList.remove('specialty--active'));
+        if (!isActive) s.classList.add('specialty--active');
+      });
+    });
+  }
 
   // ----------------------------------------------------------
   function initReveals() {
@@ -27,109 +41,6 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -80px' });
     reveals.forEach((el) => io.observe(el));
-  }
-
-  // ----------------------------------------------------------
-  function initMap() {
-    const mapEl = document.getElementById('map');
-    if (!mapEl || typeof L === 'undefined') return;
-
-    let clinics;
-    try { clinics = JSON.parse(mapEl.dataset.clinics || '[]'); }
-    catch { clinics = []; }
-    if (!clinics.length) return;
-
-    const initial = clinics[0];
-
-    const map = L.map(mapEl, {
-      center: [initial.lat, initial.lng],
-      zoom: initial.zoom,
-      zoomControl: false,
-      scrollWheelZoom: false,
-      attributionControl: true,
-      fadeAnimation: true,
-      zoomAnimation: true,
-    });
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap · &copy; CARTO',
-      subdomains: 'abcd',
-      maxZoom: 19,
-    }).addTo(map);
-
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_only_labels/{z}/{x}/{y}{r}.png', {
-      attribution: '',
-      subdomains: 'abcd',
-      maxZoom: 19,
-      pane: 'shadowPane',
-      opacity: 0.85,
-    }).addTo(map);
-
-    const makeIcon = (code, active) =>
-      L.divIcon({
-        className: '',
-        html: `
-          <div class="cd-marker ${active ? 'cd-marker--active' : ''}">
-            <span class="cd-marker__pulse"></span>
-            <span class="cd-marker__pin">${code}</span>
-          </div>
-        `,
-        iconSize: [44, 44],
-        iconAnchor: [22, 44],
-      });
-
-    const markers = {};
-    clinics.forEach((c, i) => {
-      markers[c.id] = L.marker([c.lat, c.lng], { icon: makeIcon(c.code, i === 0) }).addTo(map);
-    });
-
-    if (clinics.length >= 2) {
-      L.polyline(clinics.map((c) => [c.lat, c.lng]), { className: 'cd-flight', interactive: false }).addTo(map);
-    }
-
-    const tabsRoot = document.querySelector('.locais__tabs');
-    const tabs = document.querySelectorAll('.locais__tab');
-    const cards = document.querySelectorAll('[data-clinic-card]');
-
-    function selectClinic(id, { instant = false } = {}) {
-      const target = clinics.find((c) => c.id === id);
-      if (!target) return;
-
-      tabs.forEach((t) => t.setAttribute('aria-selected', t.dataset.clinic === id ? 'true' : 'false'));
-      if (tabsRoot) tabsRoot.dataset.active = id;
-
-      cards.forEach((card) => {
-        card.setAttribute('data-active', card.dataset.clinicCard === id ? 'true' : 'false');
-      });
-
-      Object.entries(markers).forEach(([key, m]) => {
-        const el = m.getElement();
-        if (!el) return;
-        const wrap = el.querySelector('.cd-marker');
-        if (!wrap) return;
-        wrap.classList.toggle('cd-marker--active', key === id);
-      });
-
-      if (instant) {
-        map.setView([target.lat, target.lng], target.zoom);
-      } else {
-        const other = clinics.find((c) => c.id !== id);
-        if (other) {
-          const bounds = L.latLngBounds([[target.lat, target.lng], [other.lat, other.lng]]).pad(0.25);
-          map.flyToBounds(bounds, { duration: 1.1, easeLinearity: 0.25 });
-          setTimeout(() => {
-            map.flyTo([target.lat, target.lng], target.zoom, { duration: 1.6, easeLinearity: 0.22 });
-          }, 1150);
-        } else {
-          map.flyTo([target.lat, target.lng], target.zoom, { duration: 2.0, easeLinearity: 0.25 });
-        }
-      }
-    }
-
-    tabs.forEach((t) => t.addEventListener('click', () => selectClinic(t.dataset.clinic)));
-    selectClinic(initial.id, { instant: true });
-
-    mapEl.addEventListener('click', () => { map.scrollWheelZoom.enable(); }, { once: true });
   }
 
   // ----------------------------------------------------------
