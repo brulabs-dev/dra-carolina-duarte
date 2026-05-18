@@ -10,31 +10,31 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
     <div class="hero__grid">
       <div class="hero__left reveal">
         <h1 class="hero__name">
-          Pele saudável começa com <em>escuta precisa.</em>
+          Oi, eu sou a sua<br><em>próxima dermato!</em>
         </h1>
         <p class="hero__intro">
-          Dermatologia clínica, cirúrgica e estética. Cuidado individualizado para
-          pele, cabelos e unhas, com escuta atenta e diagnóstico preciso.
+          Meu foco é oferecer um cuidado individualizado para sua pele, cabelos e unhas, 
+          combinando ciência, escuta atenta e resultados que respeitam sua identidade.
         </p>
 
         <div class="hero__actions">
-          <a class="btn btn--primary" href="https://wa.me/{{ site.doctor.phone_e164 }}?text={{ site.doctor.whatsapp_message | url_encode }}" target="_blank" rel="noopener">
+          <a class="btn btn--primary" href="#locais">
             Agendar consulta
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6"/>
             </svg>
           </a>
-          <a class="btn btn--ghost" href="#especialidades">Especialidades</a>
+          <a class="btn btn--ghost" href="#especialidades">Minha atuação</a>
         </div>
 
         <dl class="hero__meta">
           <div>
             <dt>Registro</dt>
-            <dd>{{ site.doctor.crm }} · {{ site.doctor.rqe }}</dd>
+            <dd class="crm-font">{{ site.doctor.crm }} · {{ site.doctor.rqe }}</dd>
           </div>
           <div>
-            <dt>Atendimento</dt>
-            <dd>Centro · Ingleses</dd>
+            <dt>Onde estou</dt>
+            <dd class="crm-font">Florianópolis. Centro ou Ingleses</dd>
           </div>
         </dl>
       </div>
@@ -47,8 +47,8 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
 
   <div class="hero__strip" aria-hidden="true">
     <div class="hero__strip-track">
-      <span>Dermatologia Clínica</span><span>Cirurgia Dermatológica</span><span>Biópsias</span><span>Estética Avançada</span><span>Toxina Botulínica</span><span>Microagulhamento</span><span>Bioestimuladores</span><span>Lasers</span>
-      <span>Dermatologia Clínica</span><span>Cirurgia Dermatológica</span><span>Biópsias</span><span>Estética Avançada</span><span>Toxina Botulínica</span><span>Microagulhamento</span><span>Bioestimuladores</span><span>Lasers</span>
+      <span>Acne</span><span>Melasma</span><span>Rosácea</span><span>Dermatites</span><span>Queloide</span><span>Cistos</span><span>Verrugas</span><span>Melanoma</span><span>Carcinomas</span><span>Psoríase</span>
+      <span>Acne</span><span>Melasma</span><span>Rosácea</span><span>Dermatites</span><span>Queloide</span><span>Cistos</span><span>Verrugas</span><span>Melanoma</span><span>Carcinomas</span><span>Psoríase</span>
     </div>
   </div>
 </section>
@@ -58,11 +58,10 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
   <div class="video__inner">
     <div class="video__caption">
       <div>
-        <span class="video__eyebrow">Bastidores · Clínica</span>
         <h2 class="video__title">Rotina, cuidado, <em>presença.</em></h2>
         <p class="video__lede">
-          Pequenos gestos repetidos com método. Um recorte da prática diária no consultório,
-          entre escuta, técnica e a textura humana de cada atendimento.
+          Acredito em pequenos gestos repetidos com método. Aqui você vê um recorte da minha prática diária,
+          entre técnica e a textura humana de cada atendimento.
         </p>
       </div>
     </div>
@@ -82,60 +81,30 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
 <section class="section" id="sobre">
   <div class="container">
     <div class="section-head reveal">
-      <div class="section-index">01 · Sobre</div>
+      <div class="section-index">01 · Sobre mim</div>
       <div>
-        <h2 class="section-title">Conhecimento médico, <em>escuta atenta</em> e respeito pelo tempo de cada pele.</h2>
-        <p class="section-lede">
-          A prática da Dra. Carolina une rigor técnico e atendimento individualizado,
-          conduzindo diagnósticos, tratamentos e procedimentos com segurança,
-          propósito e clareza em cada etapa.
-        </p>
+        <h2 class="section-title">Escuta atenta e <em>rigor técnico.</em></h2>
+        <p class="section-lede">Eu sempre atuo com o máximo rigor técnico e respeito pelo tempo de cada pele, unindo ciência e atendimento individualizado.</p>
       </div>
     </div>
 
-    <div class="sobre__grid reveal">
-      <div>
-        <blockquote class="sobre__quote">
-          “A pele é o primeiro órgão a contar sua história. Meu trabalho é <em>ler com cuidado</em>
-          e responder com decisões clínicas precisas, respeitando o que faz sentido para cada paciente.”
-        </blockquote>
-
-        <figure class="sobre__image">
-          <img src="https://picsum.photos/seed/cd-clinic-detail/900/1200" alt="Detalhe de ambiente clínico">
-          <figcaption>Consultório · ArteZam</figcaption>
+    <div class="sobre__editorial reveal">
+      <div class="sobre__featured">
+        <figure class="sobre__image-box">
+          <img src="https://picsum.photos/seed/cd-about-editorial/1200/1600" alt="Dra. Carolina Duarte">
+          <div class="sobre__image-overlay"></div>
+          <blockquote class="sobre__visual-quote">
+            “A pele é o primeiro órgão a contar sua história. Meu trabalho é <em>ler com cuidado</em>
+            e responder com decisões clínicas precisas.”
+          </blockquote>
         </figure>
       </div>
-
-      <dl class="sobre__pillars">
-        <div class="pillar">
-          <span class="pillar__num">/01</span>
-          <div>
-            <h3 class="pillar__title">Diagnóstico cuidadoso</h3>
-            <p class="pillar__body">Investigação clínica detalhada, com tempo dedicado à anamnese e ao exame físico antes de qualquer conduta.</p>
-          </div>
+      <div class="sobre__bio">
+        <div class="sobre__text">
+          <p>Me formei pela Universidade Federal de Santa Catarina, com especialização em Dermatologia e foco em unir o rigor da ciência à sensibilidade estética.</p>
+          <p>Para mim, cada consulta é um espaço de escuta, onde coloco a tecnologia e a técnica a serviço da sua saúde e da sua identidade.</p>
         </div>
-        <div class="pillar">
-          <span class="pillar__num">/02</span>
-          <div>
-            <h3 class="pillar__title">Resultados naturais</h3>
-            <p class="pillar__body">Estética que preserva a identidade: sem exageros, com tecnologia atualizada e protocolos seguros.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <span class="pillar__num">/03</span>
-          <div>
-            <h3 class="pillar__title">Acompanhamento contínuo</h3>
-            <p class="pillar__body">Da primeira consulta ao seguimento, com canais claros para dúvidas e revisões programadas.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <span class="pillar__num">/04</span>
-          <div>
-            <h3 class="pillar__title">Ambiente seguro</h3>
-            <p class="pillar__body">Procedimentos realizados em consultório ou centro cirúrgico, conforme indicação e complexidade.</p>
-          </div>
-        </div>
-      </dl>
+      </div>
     </div>
   </div>
 </section>
@@ -146,79 +115,86 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
     <div class="section-head reveal">
       <div class="section-index">02 · Especialidades</div>
       <div>
-        <h2 class="section-title">Quatro frentes de cuidado, <em>uma mesma escuta.</em></h2>
+        <h2 class="section-title">Conheça mais sobre <em>minha atuação.</em></h2>
         <p class="section-lede">
-          Da prevenção e diagnóstico até procedimentos cirúrgicos e estética avançada,
-          a abordagem combina precisão técnica e leitura individualizada de cada pele.
+          Combino precisão técnica e leitura individualizada para cuidar de você, 
+          da prevenção e diagnóstico até procedimentos avançados e estética.
         </p>
       </div>
     </div>
 
-    <div class="specs">
-      <article class="spec reveal">
-        <div class="spec__code">Esp.</div>
-        <h3 class="spec__name">Dermatologia <em>clínica</em></h3>
-        <div class="spec__body">
-          <p>Diagnóstico, tratamento e acompanhamento de doenças da pele, cabelos e unhas, com tempo dedicado à investigação e à construção de um plano de cuidado claro.</p>
-          <ul class="spec__list">
-            <li>Acne</li><li>Melasma</li><li>Psoríase</li><li>Dermatites</li><li>Alopécias</li><li>Micoses</li><li>Cicatrizes</li>
-          </ul>
-        </div>
-        <figure class="spec__image">
-          <img src="https://picsum.photos/seed/cd-clinical-01/800/1000" alt="Detalhe dermatológico">
+    <div class="specialties">
+      <article class="specialty reveal">
+        <figure class="specialty__image specialty__image--top">
+          <img src="https://picsum.photos/seed/cd-clinical-skin/1000/1500" alt="Dermatologia Clínica">
         </figure>
+        <div class="specialty__overlay"></div>
+        <div class="specialty__content">
+          <h3 class="specialty__title">Dermatologia Clínica</h3>
+          <h3 class="specialty__title-collapsed">Clínica</h3>
+          <p class="specialty__text">Diagnóstico e tratamento integral para a saúde da sua pele.</p>
+          <a href="#contato" class="specialty__link">
+            <span>Conhecer</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
       </article>
 
-      <article class="spec reveal">
-        <div class="spec__code">Esp.</div>
-        <h3 class="spec__name">Cirurgias <em>dermatológicas</em></h3>
-        <div class="spec__body">
-          <p>Indicadas para tratamento de doenças da pele e finalidades estéticas, realizadas em ambiente seguro (consultório ou centro cirúrgico) conforme cada caso.</p>
-          <ul class="spec__list">
-            <li>Exérese de nevos</li><li>Lipomas</li><li>Queloides</li><li>Xantelasmas</li><li>Cistos</li><li>Criocirurgia</li><li>Eletrocoagulação</li><li>Cauterização química</li>
-          </ul>
-        </div>
-        <figure class="spec__image">
-          <img src="https://picsum.photos/seed/cd-surgical-02/800/1000" alt="Ambiente cirúrgico">
+      <article class="specialty reveal">
+        <figure class="specialty__image specialty__image--top">
+          <img src="https://picsum.photos/seed/cd-inj-vial/1000/1500" alt="Injetáveis">
         </figure>
+        <div class="specialty__overlay"></div>
+        <div class="specialty__content">
+          <h3 class="specialty__title">Injetáveis</h3>
+          <h3 class="specialty__title-collapsed">Injetáveis</h3>
+          <p class="specialty__text">Procedimentos minimamente invasivos com resultados naturais.</p>
+          <a href="#contato" class="specialty__link">
+            <span>Conhecer</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
       </article>
 
-      <article class="spec reveal">
-        <div class="spec__code">Esp.</div>
-        <h3 class="spec__name">Biópsias <em>de pele</em></h3>
-        <div class="spec__body">
-          <p>Procedimentos fundamentais para o diagnóstico de doenças cutâneas e do câncer de pele, com retirada de amostra para análise laboratorial e devolutiva detalhada.</p>
-          <ul class="spec__list">
-            <li>Lesões pigmentadas</li><li>Suspeita de câncer</li><li>Doenças inflamatórias</li><li>Acompanhamento histológico</li>
-          </ul>
-        </div>
-        <figure class="spec__image">
-          <img src="https://picsum.photos/seed/cd-biopsy-03/800/1000" alt="Análise microscópica">
+      <article class="specialty reveal">
+        <figure class="specialty__image">
+          <img src="https://picsum.photos/seed/cd-laser-skin/1000/1500" alt="Lasers & Tecnologias">
         </figure>
+        <div class="specialty__overlay"></div>
+        <div class="specialty__content">
+          <h3 class="specialty__title">Lasers & Tecnologias</h3>
+          <h3 class="specialty__title-collapsed">Lasers</h3>
+          <p class="specialty__text">Tecnologia avançada para renovação e rejuvenescimento.</p>
+          <a href="#contato" class="specialty__link">
+            <span>Conhecer</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
       </article>
 
-      <article class="spec reveal">
-        <div class="spec__code">Esp.</div>
-        <h3 class="spec__name">Dermatologia <em>estética</em></h3>
-        <div class="spec__body">
-          <p>Foco em resultados naturais, seguros e personalizados para qualidade cutânea, rejuvenescimento e tratamento de queixas específicas, sempre alinhado à anatomia e identidade de cada paciente.</p>
-          <ul class="spec__list">
-            <li>Toxina botulínica</li><li>Microagulhamento</li><li>Drug delivery</li><li>Preenchimento facial</li><li>PRP</li><li>CO₂ fracionado</li><li>Bioestimuladores</li><li>Lasers</li><li>Peelings químicos</li>
-          </ul>
-        </div>
-        <figure class="spec__image">
-          <img src="https://picsum.photos/seed/cd-aesthetic-04/800/1000" alt="Detalhe estético">
+      <article class="specialty reveal">
+        <figure class="specialty__image specialty__image--bottom">
+          <img src="https://picsum.photos/seed/cd-bioreg-flower/1000/1500" alt="Bioregenerativos">
         </figure>
+        <div class="specialty__overlay"></div>
+        <div class="specialty__content">
+          <h3 class="specialty__title">Bioregenerativos</h3>
+          <h3 class="specialty__title-collapsed">Bioregenerativos</h3>
+          <p class="specialty__text">Estímulo biológico para regeneração e vitalidade cutânea.</p>
+          <a href="#contato" class="specialty__link">
+            <span>Conhecer</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
       </article>
-    </div>
-
-    <!-- Editorial gallery break -->
-    <div class="gallery reveal" aria-hidden="true">
-      <figure><img src="https://picsum.photos/seed/cd-gal-1/900/900" alt=""><figcaption>Textura · Pele</figcaption></figure>
-      <figure><img src="https://picsum.photos/seed/cd-gal-2/700/500" alt=""><figcaption>Cuidado</figcaption></figure>
-      <figure><img src="https://picsum.photos/seed/cd-gal-3/600/1000" alt=""><figcaption>Detalhe</figcaption></figure>
-      <figure><img src="https://picsum.photos/seed/cd-gal-4/700/500" alt=""><figcaption>Instrumental</figcaption></figure>
-      <figure><img src="https://picsum.photos/seed/cd-gal-5/900/500" alt=""><figcaption>Consultório</figcaption></figure>
     </div>
   </div>
 </section>
@@ -229,10 +205,10 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
     <div class="section-head reveal">
       <div class="section-index">03 · Avaliações</div>
       <div>
-        <h2 class="section-title">O que dizem <em>os pacientes.</em></h2>
+        <h2 class="section-title">O que meus <em>pacientes dizem.</em></h2>
         <p class="section-lede">
-          Depoimentos verificados de pessoas atendidas pela Dra. Carolina. Para a lista
-          completa e novas avaliações, consulte o perfil oficial no Doctoralia.
+          Quer saber o que meus pacientes dizem de mim? Tenho mais de 80 avaliações no Doctoralia, 
+          mas trouxe algumas para você ler por aqui.
         </p>
       </div>
     </div>
@@ -265,88 +241,52 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
       </article>
     </div>
 
-    <div class="avaliacoes__badge reveal">
-      <span class="stars">★★★★★</span>
-      <span>
-        <strong>{{ site.data.reviews.overall_rating }} de 5</strong>
-        · {{ site.data.reviews.total_count }} avaliações verificadas
-      </span>
-      <a href="{{ site.data.reviews.source_url | default: site.doctor.doctoralia_url }}" target="_blank" rel="noopener">
-        Ver no Doctoralia
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M7 17 17 7M9 7h8v8"/>
-        </svg>
+    <div class="avaliacoes__footer reveal">
+      <a href="{{ site.doctor.doctoralia_url }}" target="_blank" rel="noopener" class="doctoralia-link">
+        Ver + de 80 avaliações no Doctoralia
       </a>
     </div>
   </div>
 </section>
 
-<!-- =========================  LOCAIS · MAP APP  ========================= -->
+<!-- =========================  LOCAIS  ========================= -->
 <section class="section locais" id="locais">
   <div class="container">
     <div class="section-head reveal">
       <div class="section-index">04 · Onde atendo</div>
       <div>
-        <h2 class="section-title">Dois endereços, <em>o mesmo cuidado.</em></h2>
+        <h2 class="section-title">Onde <em>te recebo.</em></h2>
         <p class="section-lede">
-          Atendimento no centro de Florianópolis e no norte da ilha, nos Ingleses.
-          Escolha a unidade mais próxima e veja a localização em tempo real no mapa.
+          Atendo no Centro ou no Norte da ilha, para te trazer comodidade e um atendimento 
+          próximo, sempre com o mesmo cuidado.
         </p>
       </div>
     </div>
 
-    <div class="locais__app reveal" data-map-app>
-      <aside class="locais__panel">
-        <div class="locais__hud">
-          <span>Florianópolis · Santa Catarina</span>
-          <span>{{ site.clinics | size }} unidades</span>
+    <div class="locais__grid reveal">
+      {% for c in site.clinics %}
+      <article class="locais__item">
+        <figure class="locais__image">
+          <img src="https://picsum.photos/seed/cd-clinic-{{ c.id }}/800/600" alt="{{ c.name }}">
+        </figure>
+        <div class="locais__content">
+          <span class="locais__code">UNIDADE {{ c.code }} / {{ c.district | upcase }}</span>
+          <h3 class="locais__name">{{ c.name }}</h3>
+          <p class="locais__address">
+            <strong>{{ c.address }}</strong><br>
+            {{ c.district }} · {{ c.city }}<br>
+            {{ c.phone }}
+          </p>
+          <p class="locais__hint">{{ c.hint }}</p>
+          <a class="btn btn--primary" href="https://wa.me/{{ c.phone_e164 }}?text={{ site.doctor.whatsapp_message | url_encode }}" target="_blank" rel="noopener">
+            Agendar consulta
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
         </div>
-
-        <div class="locais__tabs" role="tablist" data-active="centro">
-          {% for c in site.clinics %}
-          <button
-            class="locais__tab"
-            role="tab"
-            data-clinic="{{ c.id }}"
-            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
-            {{ c.code }} · {{ c.district }}
-          </button>
-          {% endfor %}
-        </div>
-
-        <div class="locais__cards">
-          {% for c in site.clinics %}
-          <article class="locais__card" data-clinic-card="{{ c.id }}" data-active="{% if forloop.first %}true{% else %}false{% endif %}">
-            <span class="locais__code">UNIDADE {{ c.code }} / {{ c.district | upcase }}</span>
-            <h3 class="locais__name">{{ c.name }}</h3>
-            <p class="locais__address">
-              <strong>{{ c.address }}</strong>
-              {{ c.district }} · {{ c.city }}<br>
-              CEP {{ c.zip }}
-            </p>
-            <p class="locais__hint">{{ c.hint }}</p>
-          </article>
-          {% endfor %}
-        </div>
-
-        <a class="btn btn--primary" href="https://wa.me/{{ site.doctor.phone_e164 }}?text={{ site.doctor.whatsapp_message | url_encode }}" target="_blank" rel="noopener" style="margin-top:8px;">
-          Agendar consulta
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14M13 6l6 6-6 6"/>
-          </svg>
-        </a>
-      </aside>
-
-      <div class="locais__map">
-        <div id="map"
-          data-clinics='[{% for c in site.clinics %}{"id":"{{ c.id }}","code":"{{ c.code }}","name":"{{ c.name | escape }}","district":"{{ c.district }}","lat":{{ c.lat }},"lng":{{ c.lng }},"zoom":{{ c.zoom }}}{% unless forloop.last %},{% endunless %}{% endfor %}]'
-          aria-label="Mapa interativo dos endereços da Dra. Carolina Duarte"></div>
-        <div class="locais__compass" aria-hidden="true">N</div>
-        <div class="locais__legend">
-          Florianópolis · SC
-          <small>Centro ↔ Ingleses · ~28 km</small>
-        </div>
-      </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -355,9 +295,9 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
 <section class="section insta" id="instagram">
   <div class="container">
     <div class="insta__head reveal">
+      <div class="section-index">05 · Instagram</div>
       <div>
-        <p class="eyebrow" style="margin-bottom: 14px;">05 · Conteúdo · Instagram</p>
-        <h2 class="insta__lead">Dia a dia, conteúdo clínico e <em>educação em pele</em> no Instagram.</h2>
+        <h2 class="insta__lead">Meu dia a dia e <em>conteúdo clínico</em> no Instagram.</h2>
       </div>
       <a class="insta__handle" href="https://instagram.com/{{ site.doctor.instagram_handle }}" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -370,19 +310,17 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
     </div>
 
     <div class="insta__grid reveal">
-      {% for post in site.data.instagram.items %}
-      {% unless forloop.index > 7 %}
-      <a class="insta__tile" href="{{ post.url }}" target="_blank" rel="noopener" aria-label="Abrir post no Instagram: {{ post.caption | escape }}">
-        <img src="{{ post.image | relative_url }}" alt="{{ post.caption | escape }}" loading="lazy">
+      {% for post in site.data.instagram.items limit:7 %}
+      <a class="insta__tile" href="{{ post.url | default: 'https://instagram.com/dracarolina_duarte' }}" target="_blank" rel="noopener" aria-label="Abrir post no Instagram">
+        <img src="{{ post.image | relative_url }}" alt="Post do Instagram" loading="lazy">
         <svg class="insta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <rect x="3" y="3" width="18" height="18" rx="5"/>
           <circle cx="12" cy="12" r="4"/>
           <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor"/>
         </svg>
       </a>
-      {% endunless %}
       {% endfor %}
-      <a class="insta__tile insta__tile--more" href="{{ site.data.instagram.profile_url }}" target="_blank" rel="noopener" aria-label="Ver mais posts no Instagram da Dra. Carolina">
+      <a class="insta__tile insta__tile--more" href="https://instagram.com/{{ site.doctor.instagram_handle }}" target="_blank" rel="noopener" aria-label="Ver mais posts no Instagram da Dra. Carolina">
         <span>Ver mais</span>
         <strong>no Instagram</strong>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -393,33 +331,32 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
   </div>
 </section>
 
+<!-- =========================  IMAGEM DESTAQUE FOOTER  ========================= -->
+<div class="footer-hero reveal">
+  <img src="https://picsum.photos/seed/cd-footer-destaque/1920/800" alt="Dermatologia Editorial" loading="lazy">
+</div>
+
 <!-- =========================  CTA FINAL  ========================= -->
 <section class="section cta" id="agendar">
   <div class="container">
     <div class="cta__grid">
       <div class="reveal">
-        <p class="eyebrow" style="color: var(--accent-soft);">Atendimento humanizado · Florianópolis</p>
         <h2 class="cta__title">
-          Agende sua <em>avaliação</em> com a Dra. Carolina.
+          Agende sua avaliação, <em>vou adorar te conhecer!</em>
         </h2>
         <div class="cta__actions">
-          <a class="btn btn--primary" href="https://wa.me/{{ site.doctor.phone_e164 }}?text={{ site.doctor.whatsapp_message | url_encode }}" target="_blank" rel="noopener">
-            WhatsApp
+          <a class="btn btn--primary" href="#locais">
+            Escolher unidade
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6"/>
             </svg>
           </a>
-          <a class="btn btn--ghost" href="tel:+{{ site.doctor.phone_e164 }}">Ligar agora</a>
         </div>
       </div>
       <div class="cta__side reveal">
         <div>
-          <h4>Telefone</h4>
-          <a class="cta__phone" href="tel:+{{ site.doctor.phone_e164 }}">{{ site.doctor.phone_display }}</a>
-        </div>
-        <div>
-          <h4>Registro profissional</h4>
-          <p>{{ site.doctor.crm }}<br>{{ site.doctor.rqe }}</p>
+          <h4>Meu registro profissional</h4>
+          <p class="crm-font">{{ site.doctor.crm }} · {{ site.doctor.rqe }}</p>
         </div>
         <div>
           <h4>Atendimento</h4>
