@@ -20,6 +20,7 @@ clinics:
   - id: centro
     code: "01"
     name: Artezan Day Hospital
+    image: /assets/img/artezam.jpg
     district: Centro
     city: Florianópolis · SC
     address: Alameda Gov. Heriberto Hulse, 123
@@ -33,6 +34,7 @@ clinics:
   - id: ingleses
     code: "02"
     name: Clínica Saúde no Bairro
+    image: /assets/img/bairro.webp
     district: Ingleses Norte
     city: Florianópolis · SC
     address: Travessa Manoel Ramos de Souza, 75 - Sala 05

@@ -90,7 +90,7 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
     <div class="sobre__editorial reveal">
       <div class="sobre__featured">
         <figure class="sobre__image-box">
-          <img src="https://picsum.photos/seed/cd-about-editorial/1200/1600" alt="Dra. Carolina Duarte">
+          <img src="{{ '/assets/img/escuta-ativa.jpg' | relative_url }}" alt="Dra. Carolina Duarte em atendimento">
           <div class="sobre__image-overlay"></div>
           <blockquote class="sobre__visual-quote">
             “A pele é o primeiro órgão a contar sua história. Meu trabalho é <em>ler com cuidado</em>
@@ -125,7 +125,7 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
     <div class="specialties">
       <article class="specialty reveal">
         <figure class="specialty__image specialty__image--top">
-          <img src="https://picsum.photos/seed/cd-clinical-skin/1000/1500" alt="Dermatologia Clínica">
+          <img src="{{ '/assets/img/clinica.jpg' | relative_url }}" alt="Dermatologia Clínica">
         </figure>
         <div class="specialty__overlay"></div>
         <span class="specialty__hint" aria-hidden="true">
@@ -148,7 +148,7 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
 
       <article class="specialty reveal">
         <figure class="specialty__image specialty__image--top">
-          <img src="https://picsum.photos/seed/cd-inj-vial/1000/1500" alt="Injetáveis">
+          <img src="{{ '/assets/img/injetaveis.png' | relative_url }}" alt="Injetáveis">
         </figure>
         <div class="specialty__overlay"></div>
         <span class="specialty__hint" aria-hidden="true">
@@ -171,7 +171,7 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
 
       <article class="specialty reveal">
         <figure class="specialty__image">
-          <img src="https://picsum.photos/seed/cd-laser-skin/1000/1500" alt="Lasers & Tecnologias">
+          <img src="{{ '/assets/img/laser.jpg' | relative_url }}" alt="Lasers & Tecnologias">
         </figure>
         <div class="specialty__overlay"></div>
         <span class="specialty__hint" aria-hidden="true">
@@ -194,7 +194,7 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
 
       <article class="specialty reveal">
         <figure class="specialty__image specialty__image--bottom">
-          <img src="https://picsum.photos/seed/cd-bioreg-flower/1000/1500" alt="Bioregenerativos">
+          <img src="{{ '/assets/img/bioregen.jpg' | relative_url }}" alt="Bioregenerativos">
         </figure>
         <div class="specialty__overlay"></div>
         <span class="specialty__hint" aria-hidden="true">
@@ -286,7 +286,7 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
       {% for c in site.clinics %}
       <article class="locais__item">
         <figure class="locais__image">
-          <img src="https://picsum.photos/seed/cd-clinic-{{ c.id }}/800/600" alt="{{ c.name }}">
+          <img src="{{ c.image | relative_url }}" alt="{{ c.name }}">
         </figure>
         <div class="locais__content">
           <span class="locais__code">UNIDADE {{ c.code }} / {{ c.district | upcase }}</span>
@@ -352,7 +352,7 @@ description: Dermatologia clínica, cirúrgica e estética com escuta atenta e c
 
 <!-- =========================  IMAGEM DESTAQUE FOOTER  ========================= -->
 <div class="footer-hero reveal">
-  <img src="https://picsum.photos/seed/cd-footer-destaque/1920/800" alt="Dermatologia Editorial" loading="lazy">
+  <img src="{{ '/assets/img/footer.jpg' | relative_url }}" alt="Dermatologia Editorial" loading="lazy">
 </div>
 
 <!-- =========================  CTA FINAL  ========================= -->
