@@ -3,8 +3,8 @@ email: ""
 description: >-
   Dermatologia clínica, cirúrgica e estética em Florianópolis. Atendimento da
   Dra. Carolina Duarte (CRM-SC 32750 · RQE 26040).
-baseurl: "/dra-carolina-duarte"
-url: "https://brulabs-dev.github.io"
+baseurl: ""
+url: "https://carolduartedermato.com.br"
 lang: pt-BR
 
 doctor:
