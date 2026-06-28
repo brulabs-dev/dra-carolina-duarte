@@ -46,6 +46,11 @@ clinics:
     zoom: 16
     hint: Atendimento no norte da ilha, mais próximo das praias.
 
+collections:
+  informacoes:
+    output: true
+    permalink: /informacoes/:path/
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap

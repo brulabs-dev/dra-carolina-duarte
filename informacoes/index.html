@@ -1,0 +1,292 @@
+---
+layout: default
+title: Informações & Especialidades · Dra. Carolina Duarte
+description: Orientações sobre dermatologia clínica, estética e cirúrgica para entender melhor sua pele antes da consulta.
+---
+
+{% assign sorted_articles = site.informacoes | sort: "order" %}
+{% assign categories = "Clínica,Estética,Cirúrgica" | split: "," %}
+
+<section class="info-hero">
+  <figure class="info-hero__media reveal">
+    <img src="{{ '/assets/img/escuta-ativa.jpg' | relative_url }}" alt="Avaliação dermatológica com dermatoscópio em consultório" loading="eager">
+    <div class="container info-hero__content">
+      <div class="info-hero__copy">
+        <h1 class="info-hero__title">Informações dermatológicas</h1>
+        <p>Leituras claras para entender sua pele, seus tratamentos e o que vale conversar em consulta.</p>
+      </div>
+    </div>
+  </figure>
+</section>
+
+<section class="section info-section">
+  <div class="container">
+    <div class="info-layout reveal">
+      <aside class="info-sidebar" aria-label="Temas de dermatologia">
+        <div class="info-sidebar__intro">
+          <span class="info-eyebrow">Temas</span>
+          <p>Escolha um assunto para ler com mais contexto antes da consulta.</p>
+        </div>
+
+        {% for category in categories %}
+          {% assign category_articles = sorted_articles | where: "category", category %}
+          {% if category_articles.size > 0 %}
+            <div class="info-category-group">
+              <h2 class="info-category-title">{{ category }}</h2>
+              <ul class="info-tab-list">
+                {% for item in category_articles %}
+                  <li>
+                    <button class="info-tab-link" type="button" data-slug="{{ item.slug }}" aria-controls="info-{{ item.slug }}">
+                      <span>{{ item.title }}</span>
+                    </button>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </aside>
+
+      <div class="info-articles-container">
+        {% for item in sorted_articles %}
+          <article class="info-card" id="info-{{ item.slug }}" data-category="{{ item.category }}">
+            <button class="info-card-header" type="button" aria-expanded="false" aria-controls="info-panel-{{ item.slug }}" data-slug="{{ item.slug }}">
+              <span class="info-card-header__text">
+                <span class="info-card-kicker">{{ item.category }}</span>
+                <span class="info-card-title">{{ item.title }}</span>
+                {% if item.summary %}
+                  <span class="info-card-summary">{{ item.summary }}</span>
+                {% endif %}
+              </span>
+              <span class="info-card-chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </span>
+            </button>
+
+            <div class="info-card-body" id="info-panel-{{ item.slug }}">
+              <div class="info-article-shell">
+                <header class="info-article-cover">
+                  <div class="info-article-cover__copy">
+                    <div class="info-card-meta">
+                      <span class="info-card-badge">{{ item.category }}</span>
+                      <span class="info-card-count">Guia da consulta</span>
+                    </div>
+                    <h2 class="info-article-title">{{ item.title }}</h2>
+                    {% if item.summary %}
+                      <p class="info-article-summary">{{ item.summary }}</p>
+                    {% endif %}
+                  </div>
+
+                  <figure class="info-article-cover__media">
+                    {% if item.image %}
+                      <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy" style="object-position: {{ item.cover_position | default: 'center' }};">
+                    {% endif %}
+                    <figcaption>{{ item.category }} · Dermatologia</figcaption>
+                  </figure>
+                </header>
+
+                <div class="info-card-content">
+                  {% assign content_parts = item.content | split: "<h3" %}
+                  {% assign inline_image = item.inline_image | default: item.image %}
+                  {% assign inline_image_alt = item.inline_image_alt | default: item.title %}
+                  {% assign inline_image_position = item.inline_image_position | default: 'center' %}
+                  {% assign inline_image_two = item.inline_image_2 | default: item.image %}
+                  {% assign inline_image_two_alt = item.inline_image_2_alt | default: item.title %}
+                  {% assign inline_image_two_position = item.inline_image_2_position | default: 'center' %}
+                  {% assign inline_image_three = item.inline_image_3 | default: inline_image %}
+                  {% assign inline_image_three_alt = item.inline_image_3_alt | default: inline_image_alt %}
+                  {% assign inline_image_three_position = item.inline_image_3_position | default: 'center' %}
+                  {% assign pullquote = item.pullquote | default: item.summary %}
+                  {% assign pullquote_label = item.pullquote_label | default: 'Na consulta' %}
+                  {% assign quote_at = item.quote_at | default: 3 | plus: 0 %}
+                  {% assign media_pair_at = item.media_pair_at | default: 4 | plus: 0 %}
+                  {% assign fact_at = item.fact_at | default: 6 | plus: 0 %}
+                  {% assign fact_2_at = item.fact_2_at | default: 0 | plus: 0 %}
+                  {% for part in content_parts %}
+                    {% if forloop.first %}
+                      {% assign intro_content = part | strip %}
+                      {% if intro_content != "" %}
+                        <div class="info-story-intro">
+                          {{ part }}
+                        </div>
+                      {% endif %}
+                    {% else %}
+                      {% if forloop.index == quote_at and inline_image %}
+                        <aside class="info-editorial-spread">
+                          <figure>
+                            <img src="{{ inline_image | relative_url }}" alt="{{ inline_image_alt }}" loading="lazy" style="object-position: {{ inline_image_position }};">
+                          </figure>
+                          <div class="info-editorial-spread__quote">
+                            <span>{{ pullquote_label }}</span>
+                            <blockquote>{{ pullquote }}</blockquote>
+                          </div>
+                        </aside>
+                      {% endif %}
+                      {% if forloop.index == media_pair_at and inline_image_two %}
+                        <div class="info-image-essay">
+                          <figure class="info-image-essay__primary">
+                            <img src="{{ inline_image_two | relative_url }}" alt="{{ inline_image_two_alt }}" loading="lazy" style="object-position: {{ inline_image_two_position }};">
+                          </figure>
+                          {% if inline_image_three %}
+                            <figure class="info-image-essay__secondary">
+                              <img src="{{ inline_image_three | relative_url }}" alt="{{ inline_image_three_alt }}" loading="lazy" style="object-position: {{ inline_image_three_position }};">
+                            </figure>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                      {% if forloop.index == fact_at and item.fact_value %}
+                        <aside class="info-fact-panel">
+                          <div class="info-fact-panel__copy">
+                            <span>{{ item.fact_label }}</span>
+                            <strong>{{ item.fact_value }}</strong>
+                            {% if item.fact_note %}
+                              <p>{{ item.fact_note }}</p>
+                            {% endif %}
+                          </div>
+                          {% if item.fact_image %}
+                            <figure>
+                              <img src="{{ item.fact_image | relative_url }}" alt="{{ item.fact_image_alt | default: item.title }}" loading="lazy" style="object-position: {{ item.fact_image_position | default: 'center' }};">
+                            </figure>
+                          {% endif %}
+                        </aside>
+                      {% endif %}
+                      {% if forloop.index == fact_2_at and item.fact_2_value %}
+                        <aside class="info-fact-panel info-fact-panel--quiet">
+                          <div class="info-fact-panel__copy">
+                            <span>{{ item.fact_2_label }}</span>
+                            <strong>{{ item.fact_2_value }}</strong>
+                            {% if item.fact_2_note %}
+                              <p>{{ item.fact_2_note }}</p>
+                            {% endif %}
+                          </div>
+                          {% if item.fact_2_image %}
+                            <figure>
+                              <img src="{{ item.fact_2_image | relative_url }}" alt="{{ item.fact_2_image_alt | default: item.title }}" loading="lazy" style="object-position: {{ item.fact_2_image_position | default: 'center' }};">
+                            </figure>
+                          {% endif %}
+                        </aside>
+                      {% endif %}
+                      <section class="info-story-section">
+                        <span class="info-story-section__number">{{ forloop.index | minus: 1 | prepend: "0" }}</span>
+                        <div class="info-story-section__body">
+                          <h3{{ part }}
+                        </div>
+                      </section>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <div class="info-care-note">
+                  <strong>Antes de decidir um tratamento</strong>
+                  <span>Cada pele tem histórico, rotina, sensibilidade e riscos próprios. A consulta serve para transformar informação em um plano seguro para você.</span>
+                </div>
+
+                <div class="info-cta-box">
+                  <div class="info-cta-header">
+                    <span class="info-eyebrow">Consulta</span>
+                    <h3>Quer avaliar esse tema com a Dra. Carolina?</h3>
+                    <p>Escolha o consultório mais conveniente para iniciar o agendamento.</p>
+                  </div>
+                  <div class="info-cta-buttons">
+                    {% for clinic in site.clinics %}
+                      {% capture message %}Olá! Vim do site da Dra. Carolina Duarte e gostaria de agendar uma consulta ou tirar dúvidas sobre {{ item.title }} no consultório {{ clinic.district }}.{% endcapture %}
+                      <a href="https://wa.me/{{ clinic.phone_e164 }}?text={{ message | uri_escape }}" target="_blank" rel="noopener" class="info-cta-link">
+                        <span>{{ clinic.district }}</span>
+                        <small>{{ clinic.name }}</small>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                      </a>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const desktopQuery = window.matchMedia('(min-width: 900px)');
+    const links = Array.from(document.querySelectorAll('.info-tab-link'));
+    const cards = Array.from(document.querySelectorAll('.info-card'));
+    const headers = Array.from(document.querySelectorAll('.info-card-header'));
+
+    if (!cards.length) return;
+
+    const slugFromHash = () => window.location.hash.replace('#', '');
+    const cardFromSlug = (slug) => document.getElementById(`info-${slug}`);
+    let activeSlug = cardFromSlug(slugFromHash()) ? slugFromHash() : cards[0].id.replace('info-', '');
+
+    const setHash = (slug) => {
+      if (window.location.hash !== `#${slug}`) {
+        history.replaceState(null, '', `#${slug}`);
+      }
+    };
+
+    const setActiveLink = (slug) => {
+      links.forEach((link) => {
+        const isActive = link.dataset.slug === slug;
+        link.classList.toggle('is-active', isActive);
+        link.setAttribute('aria-current', isActive ? 'true' : 'false');
+      });
+    };
+
+    const openArticle = (slug, options = {}) => {
+      const { updateHash = true, scroll = false } = options;
+      const target = cardFromSlug(slug);
+      if (!target) return;
+
+      activeSlug = slug;
+      setActiveLink(slug);
+
+      cards.forEach((card) => {
+        const isTarget = card === target;
+        const body = card.querySelector('.info-card-body');
+        const header = card.querySelector('.info-card-header');
+
+        if (desktopQuery.matches) {
+          card.hidden = !isTarget;
+          card.classList.toggle('is-active', isTarget);
+          if (body) body.hidden = false;
+          if (header) header.setAttribute('aria-expanded', 'true');
+        } else {
+          card.hidden = false;
+          card.classList.toggle('is-expanded', isTarget);
+          if (body) body.hidden = !isTarget;
+          if (header) header.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+        }
+      });
+
+      if (updateHash) setHash(slug);
+      if (scroll) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        openArticle(link.dataset.slug, { scroll: true });
+      });
+    });
+
+    headers.forEach((header) => {
+      header.addEventListener('click', () => {
+        if (desktopQuery.matches) return;
+        openArticle(header.dataset.slug, { scroll: true });
+      });
+    });
+
+    desktopQuery.addEventListener('change', () => openArticle(activeSlug, { updateHash: false }));
+    window.addEventListener('hashchange', () => {
+      const slug = slugFromHash();
+      if (cardFromSlug(slug)) openArticle(slug, { updateHash: false, scroll: true });
+    });
+
+    openArticle(activeSlug, { updateHash: Boolean(slugFromHash()) });
+  });
+</script>

@@ -7,4 +7,6 @@ vendor
 
 # Local/project notes and source briefing assets
 *.md
+!_informacoes/
+!_informacoes/*.md
 briefing/
