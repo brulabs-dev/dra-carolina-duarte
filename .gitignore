@@ -10,3 +10,5 @@ vendor
 !_informacoes/
 !_informacoes/*.md
 briefing/
+.antigravity-cli/
+
