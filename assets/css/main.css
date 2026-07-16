@@ -1224,8 +1224,9 @@ body::before {
 .footer__partner img { height: 45px; width: auto; mix-blend-mode: multiply; opacity: 0.8; }
 
 /* ---------- reveal ---------- */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal { opacity: 1; transform: none; transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+html.reveal-ready .reveal:not(.is-visible) { opacity: 0; transform: translateY(18px); }
+html.reveal-ready .reveal.is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

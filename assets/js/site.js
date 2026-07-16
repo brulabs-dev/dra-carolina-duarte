@@ -32,6 +32,7 @@
       reveals.forEach((el) => el.classList.add('is-visible'));
       return;
     }
+    document.documentElement.classList.add('reveal-ready');
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         if (e.isIntersecting) {
@@ -41,6 +42,10 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -80px' });
     reveals.forEach((el) => io.observe(el));
+    window.setTimeout(() => {
+      reveals.forEach((el) => el.classList.add('is-visible'));
+      document.documentElement.classList.remove('reveal-ready');
+    }, 1600);
   }
 
   // ----------------------------------------------------------
