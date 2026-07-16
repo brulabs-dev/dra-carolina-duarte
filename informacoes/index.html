@@ -21,6 +21,11 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
 
 <section class="section info-section">
   <div class="container">
+    <div class="info-mobile-intro">
+      <span class="info-eyebrow">Temas</span>
+      <h2>Guias para ler antes da consulta</h2>
+      <p>Toque em um assunto para abrir a orientação completa.</p>
+    </div>
     <div class="info-layout reveal">
       <aside class="info-sidebar" aria-label="Temas de dermatologia">
         <div class="info-sidebar__intro">
@@ -51,12 +56,18 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
         {% for item in sorted_articles %}
           <article class="info-card" id="info-{{ item.slug }}" data-category="{{ item.category }}">
             <button class="info-card-header" type="button" aria-expanded="false" aria-controls="info-panel-{{ item.slug }}" data-slug="{{ item.slug }}">
+              {% if item.image %}
+                <span class="info-card-header__media" aria-hidden="true">
+                  <img src="{{ item.image | relative_url }}" alt="" loading="lazy" style="object-position: {{ item.cover_position | default: 'center' }};">
+                </span>
+              {% endif %}
               <span class="info-card-header__text">
                 <span class="info-card-kicker">{{ item.category }}</span>
                 <span class="info-card-title">{{ item.title }}</span>
                 {% if item.summary %}
                   <span class="info-card-summary">{{ item.summary }}</span>
                 {% endif %}
+                <span class="info-card-action">Ler guia</span>
               </span>
               <span class="info-card-chevron" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
