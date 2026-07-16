@@ -26,6 +26,12 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
       <h2>Guias para ler antes da consulta</h2>
       <p>Toque em um assunto para abrir a orientação completa.</p>
     </div>
+    <div class="info-mobile-filter" role="group" aria-label="Filtrar temas">
+      <button class="info-mobile-filter__button" type="button" data-info-filter="all" aria-pressed="false">Todos</button>
+      {% for category in categories %}
+        <button class="info-mobile-filter__button{% if forloop.first %} is-active{% endif %}" type="button" data-info-filter="{{ category }}" aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}">{{ category }}</button>
+      {% endfor %}
+    </div>
     <div class="info-layout reveal">
       <aside class="info-sidebar" aria-label="Temas de dermatologia">
         <div class="info-sidebar__intro">
@@ -228,15 +234,23 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
     const links = Array.from(document.querySelectorAll('.info-tab-link'));
     const cards = Array.from(document.querySelectorAll('.info-card'));
     const headers = Array.from(document.querySelectorAll('.info-card-header'));
+    const filterButtons = Array.from(document.querySelectorAll('[data-info-filter]'));
 
     if (!cards.length) return;
 
     const slugFromHash = () => window.location.hash.replace('#', '');
     const cardFromSlug = (slug) => document.getElementById(`info-${slug}`);
-    let activeSlug = cardFromSlug(slugFromHash()) ? slugFromHash() : cards[0].id.replace('info-', '');
+    const firstSlug = cards[0].id.replace('info-', '');
+    const defaultMobileFilter = filterButtons.find((button) => button.dataset.infoFilter !== 'all')?.dataset.infoFilter || 'all';
+    let currentFilter = desktopQuery.matches ? 'all' : defaultMobileFilter;
+    let activeSlug = cardFromSlug(slugFromHash()) ? slugFromHash() : (desktopQuery.matches ? firstSlug : null);
 
     const setHash = (slug) => {
-      if (window.location.hash !== `#${slug}`) {
+      if (!slug) {
+        if (window.location.hash) {
+          history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+        }
+      } else if (window.location.hash !== `#${slug}`) {
         history.replaceState(null, '', `#${slug}`);
       }
     };
@@ -247,6 +261,38 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
         link.classList.toggle('is-active', isActive);
         link.setAttribute('aria-current', isActive ? 'true' : 'false');
       });
+    };
+
+    const matchesFilter = (card) => currentFilter === 'all' || card.dataset.category === currentFilter;
+
+    const setActiveFilter = (filter) => {
+      currentFilter = filter || 'all';
+      filterButtons.forEach((button) => {
+        const isActive = button.dataset.infoFilter === currentFilter;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    };
+
+    const closeArticles = (options = {}) => {
+      const { updateHash = true } = options;
+      activeSlug = null;
+      setActiveLink(null);
+      cards.forEach((card) => {
+        const body = card.querySelector('.info-card-body');
+        const header = card.querySelector('.info-card-header');
+        const action = card.querySelector('.info-card-action');
+        if (desktopQuery.matches) {
+          card.hidden = true;
+        } else {
+          card.hidden = !matchesFilter(card);
+          card.classList.remove('is-expanded');
+          if (body) body.hidden = true;
+          if (header) header.setAttribute('aria-expanded', 'false');
+          if (action) action.textContent = 'Ler guia';
+        }
+      });
+      if (updateHash) setHash(null);
     };
 
     const openArticle = (slug, options = {}) => {
@@ -261,6 +307,7 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
         const isTarget = card === target;
         const body = card.querySelector('.info-card-body');
         const header = card.querySelector('.info-card-header');
+        const action = card.querySelector('.info-card-action');
 
         if (desktopQuery.matches) {
           card.hidden = !isTarget;
@@ -268,10 +315,11 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
           if (body) body.hidden = false;
           if (header) header.setAttribute('aria-expanded', 'true');
         } else {
-          card.hidden = false;
+          card.hidden = !matchesFilter(card);
           card.classList.toggle('is-expanded', isTarget);
           if (body) body.hidden = !isTarget;
           if (header) header.setAttribute('aria-expanded', isTarget ? 'true' : 'false');
+          if (action) action.textContent = isTarget ? 'Fechar guia' : 'Ler guia';
         }
       });
 
@@ -285,19 +333,59 @@ description: Orientações sobre dermatologia clínica, estética e cirúrgica p
       });
     });
 
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setActiveFilter(button.dataset.infoFilter);
+        if (activeSlug && !matchesFilter(cardFromSlug(activeSlug))) {
+          closeArticles();
+          return;
+        }
+        if (activeSlug) {
+          openArticle(activeSlug, { updateHash: false });
+        } else {
+          closeArticles({ updateHash: false });
+        }
+      });
+    });
+
     headers.forEach((header) => {
       header.addEventListener('click', () => {
         if (desktopQuery.matches) return;
+        if (header.dataset.slug === activeSlug) {
+          closeArticles();
+          return;
+        }
         openArticle(header.dataset.slug, { scroll: true });
       });
     });
 
-    desktopQuery.addEventListener('change', () => openArticle(activeSlug, { updateHash: false }));
-    window.addEventListener('hashchange', () => {
-      const slug = slugFromHash();
-      if (cardFromSlug(slug)) openArticle(slug, { updateHash: false, scroll: true });
+    desktopQuery.addEventListener('change', () => {
+      if (desktopQuery.matches) {
+        openArticle(activeSlug || firstSlug, { updateHash: false });
+      } else if (activeSlug && cardFromSlug(activeSlug)) {
+        openArticle(activeSlug, { updateHash: false });
+      } else {
+        closeArticles({ updateHash: false });
+      }
     });
 
-    openArticle(activeSlug, { updateHash: Boolean(slugFromHash()) });
+    window.addEventListener('hashchange', () => {
+      const slug = slugFromHash();
+      const card = cardFromSlug(slug);
+      if (card) {
+        if (!desktopQuery.matches) setActiveFilter(card.dataset.category || 'all');
+        openArticle(slug, { updateHash: false, scroll: true });
+      }
+    });
+
+    if (!desktopQuery.matches && activeSlug) {
+      const activeCard = cardFromSlug(activeSlug);
+      setActiveFilter(activeCard.dataset.category || 'all');
+      openArticle(activeSlug, { updateHash: Boolean(slugFromHash()) });
+    } else if (desktopQuery.matches) {
+      openArticle(activeSlug || firstSlug, { updateHash: Boolean(slugFromHash()) });
+    } else {
+      closeArticles({ updateHash: false });
+    }
   });
 </script>
